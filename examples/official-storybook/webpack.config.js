@@ -9,7 +9,15 @@ module.exports = (baseConfig, env, defaultConfig) => ({
       ...defaultConfig.module.rules,
       {
         test: /\.stories\.jsx?$/,
-        use: require.resolve('@storybook/addon-storysource/loader'),
+        loaders: [
+          {
+            loader: require.resolve('@storybook/addon-storysource/loader'),
+            options: {
+              targets: ['StorySource', 'LiveEdit'],
+              sourcePresets: ['es2015', 'react'],
+            }, // no support for babel 7 yet
+          },
+        ],
         include: [
           path.resolve(__dirname, './stories'),
           path.resolve(__dirname, '../../lib/ui/src'),
@@ -41,4 +49,7 @@ module.exports = (baseConfig, env, defaultConfig) => ({
     // See https://github.com/graphql/graphql-language-service/issues/111#issuecomment-306723400
     new ContextReplacementPlugin(/graphql-language-service-interface[/\\]dist/, /\.js$/),
   ],
+  watchOptions: {
+    poll: 10000,
+  },
 });

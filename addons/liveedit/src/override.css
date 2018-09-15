@@ -1,0 +1,7 @@
+#root .react-codemirror2 {
+    height: 100%
+}
+
+#root .react-codemirror2 .CodeMirror {
+    height: 100%
+}
