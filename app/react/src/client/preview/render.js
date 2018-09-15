@@ -4,8 +4,6 @@ import ReactDOM from 'react-dom';
 import { stripIndents } from 'common-tags';
 import isReactRenderable from './element_check';
 
-const rootEl = document.getElementById('root');
-
 function render(node, el) {
   ReactDOM.render(
     process.env.STORYBOOK_EXAMPLE_APP ? <React.StrictMode>{node}</React.StrictMode> : node,
@@ -21,6 +19,7 @@ export default function renderMain({
   showError,
   forceRender,
 }) {
+  const rootEl = document.getElementById('root');
   const element = story();
 
   if (!element) {

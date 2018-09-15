@@ -1,10 +1,15 @@
-const path = require('path');
-
 module.exports = (storybookBaseConfig, configType, defaultConfig) => {
   defaultConfig.module.rules.push({
-    test: [/\.stories\.js$/, /index\.js$/],
-    loaders: [require.resolve('@storybook/addon-storysource/loader')],
-    include: [path.resolve(__dirname, '../src')],
+    test: /\.stories\.jsx?$/,
+    loaders: [
+      {
+        loader: require.resolve('@storybook/addon-storysource/loader'),
+        options: {
+          targets: ['StorySource', 'LiveEdit'],
+          sourcePresets: ['es2015'],
+        }, // no support for babel 7 yet
+      },
+    ],
     enforce: 'pre',
   });
 
@@ -12,6 +17,14 @@ module.exports = (storybookBaseConfig, configType, defaultConfig) => {
     test: /\.txt$/,
     use: 'raw-loader',
   });
+
+  // eslint-disable-next-line no-param-reassign
+  defaultConfig.watchOptions = {
+    poll: 10000,
+  };
+
+  // eslint-disable-next-line no-param-reassign
+  defaultConfig.resolve.alias.STORYBOOK_FRAMEWORK = '@storybook/riot';
 
   return defaultConfig;
 };

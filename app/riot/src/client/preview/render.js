@@ -1,6 +1,7 @@
 import { document } from 'global';
 import { stripIndents } from 'common-tags';
 import { unregister } from 'riot';
+import reactDom from 'react-dom';
 import { render as renderRiot } from './render-riot';
 
 export default function renderMain({
@@ -16,6 +17,17 @@ export default function renderMain({
   rootElement.innerHTML = '';
   rootElement.dataset.is = 'root';
   const component = story();
+  if (
+    component &&
+    component.$$typeof &&
+    component.$$typeof.toString() === 'Symbol(react.element)'
+  ) {
+    rootElement.removeAttribute('id');
+    delete rootElement.dataset.is;
+    reactDom.render(component, rootElement);
+    document.getElementById('root').dataset.is = 'root';
+    return component;
+  }
   const rendered = renderRiot(component);
   if (!rendered)
     showError({

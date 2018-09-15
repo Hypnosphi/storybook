@@ -39,6 +39,7 @@ module.exports = (baseConfig, env, defaultConfig) => ({
     ...defaultConfig.resolve,
     // https://github.com/graphql/graphql-js#using-in-a-browser
     extensions: ['.mjs', ...defaultConfig.resolve.extensions],
+    alias: { STORYBOOK_FRAMEWORK: '@storybook/react' },
   },
   plugins: [
     ...defaultConfig.plugins,
@@ -49,7 +50,4 @@ module.exports = (baseConfig, env, defaultConfig) => ({
     // See https://github.com/graphql/graphql-language-service/issues/111#issuecomment-306723400
     new ContextReplacementPlugin(/graphql-language-service-interface[/\\]dist/, /\.js$/),
   ],
-  watchOptions: {
-    poll: 10000,
-  },
 });
