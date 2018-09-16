@@ -1,9 +1,3 @@
 version: 2
 dependencies:
 - type: js
-  settings:
-    related_pr_behavior: close
-    github_labels:
-    - dependencies:update
-    github_assignees:
-    - Hypnosphi
