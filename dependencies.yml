@@ -1,7 +1,6 @@
 version: 2
 dependencies:
 - type: js
-  path: /
   settings:
     related_pr_behavior: close
     github_labels:
