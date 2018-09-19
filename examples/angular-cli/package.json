@@ -70,7 +70,7 @@
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "^2.0.3",
     "@types/jest": "^23.3.1",
-    "@types/node": "~10.9.2",
+    "@types/node": "10.10.1",
     "@types/storybook__addon-options": "^3.2.2",
     "@types/webpack-env": "^1.13.6",
     "global": "^4.3.2",
