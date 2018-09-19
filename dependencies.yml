@@ -4,8 +4,33 @@ dependencies:
   settings:
     update_package_json_lower_bounds: true
     related_pr_behavior: close
-    github_labels:  # list of label names
+    constraint_prefix: ^
+    dist_tags:
+      babel-prest-minify: canary
+      react-dev-utils: next
     github_labels:
     - dependencies:update
     github_assignees:
     - Hypnosphi
+  manifest_updates:
+    filters:
+      - name: react-native
+        enabled: false
+      - name: airbnb-js-shims
+        enabled: false
+
+- type: js
+  path: docs
+  settings:
+    related_pr_behavior: close
+    constraint_prefix: ^
+    github_labels:
+    - dependencies:update
+    github_assignees:
+    - Hypnosphi
+  manifest_updates:
+    filters:
+      - name: react
+        enabled: false
+      - name: babel-loader
+        enabled: false
