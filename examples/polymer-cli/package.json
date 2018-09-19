@@ -20,7 +20,7 @@
     "@storybook/polymer": "4.0.0-alpha.21",
     "@webcomponents/webcomponentsjs": "^1.2.0",
     "global": "^4.3.2",
-    "lit-html": "^0.10.2",
+    "lit-html": "0.11.4",
     "polymer-webpack-loader": "^2.0.3",
     "webpack": "^4.17.1"
   },
