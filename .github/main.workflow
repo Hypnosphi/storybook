@@ -27,5 +27,4 @@ workflow "Trigger TeamCity on label" {
 action "Trigger TeamCity Build" {
   uses = "docker://node"
   runs = "node scripts/teamcity-trigger-build.js"
-  secrets = ["TEAMCITY_USERNAME", "TEAMCITY_PASSWORD"]
 }
